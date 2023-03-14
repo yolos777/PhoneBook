@@ -15,7 +15,7 @@ class BookOfContacts(TemplateView):
         tip = 'All contacts'
         if search_by == 'surname' and query:
             tip = f"Filtered by {query}"
-            contact_cards = models.Names.objects.filter(surname = query)
+            contact_cards = models.Names.objects.filter(surname__startswith = query)
             context['tip'] = tip
             context['contact_cards'] = contact_cards
             return context
